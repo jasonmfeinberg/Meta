@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{4EFFE559-3611-E501-0645-B82D1476FC90}</ProjectGuid>
+	<ProjectGuid>{77A3F8E8-46A1-D3DA-AE5F-CF97BF119CFF}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -47,10 +47,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharClasses.cs" />
+     <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\GameGrid.cs" />
+     <Compile Include="Assets\Scripts\GameWorld.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\GridBlock.cs" />
+     <Compile Include="Assets\Scripts\GridBlockMoveState.cs" />
      <Compile Include="Assets\Scripts\PriorityQueue.cs" />
+     <Compile Include="Assets\Scripts\Tuple.cs" />
+     <Compile Include="Assets\Scripts\TurnQueue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

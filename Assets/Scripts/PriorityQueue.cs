@@ -1,21 +1,21 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PriorityQueue<T>{
 
-	private ArrayList elements;
+	private List<Element> elements;
 
-	private struct element{
+	private struct Element{
 		public int priority;
 		public T obj;
 	}
 
 	public PriorityQueue (){
-		elements = new ArrayList ();
+		elements = new List<Element> ();
 	}
 
 	public void add(T obj, int priority){
-		element toAdd = new element ();
+		Element toAdd = new Element ();
 		toAdd.priority = priority;
 		toAdd.obj = obj;
 		elements.Insert (insertSpot (priority),toAdd);
@@ -23,7 +23,7 @@ public class PriorityQueue<T>{
 
 	private int insertSpot(int val){
 		for (int i=0; i<elements.Count; i++) {
-			element checkEle = (element)elements[i];
+			Element checkEle = elements[i];
 			if (val < checkEle.priority){
 				return i;
 			}
@@ -32,7 +32,7 @@ public class PriorityQueue<T>{
 	}
 
 	public T pop(){
-		element topElement = (element)elements [0];
+		Element topElement = elements [0];
 		T topObj = topElement.obj;
 		elements.RemoveAt (0);
 		return topObj;
@@ -40,5 +40,11 @@ public class PriorityQueue<T>{
 
 	public bool isEmpty(){
 		return elements.Count == 0;
+	}
+	
+	public T top(){
+		Element topElement = elements [0];
+		T topObj = topElement.obj;
+		return topObj;
 	}
 }
