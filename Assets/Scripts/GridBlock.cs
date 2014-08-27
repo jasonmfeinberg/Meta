@@ -2,7 +2,24 @@ using UnityEngine;
 using System;
 
 public class GridBlock : MonoBehaviour {
-	public GridBlockMoveState MoveState;
+	protected GridBlockMoveState baseMoveState;
+	
+	public GridBlockMoveState MoveState{
+		get { 
+			if (baseMoveState != GridBlockMoveState.Movable || !Occupied){
+				return baseMoveState;
+			}
+			else{
+				if(Occupant.Team == gameWorld.Active.Team){
+					return GridBlockMoveState.Passable;
+				}
+				else{
+					return GridBlockMoveState.Impassable;
+				}
+			}
+		}
+		set { }
+	}
 	
 	public GameWorld gameWorld{
 		get{return transform.parent.GetComponent<GameWorld>();}
@@ -60,15 +77,15 @@ public class GridBlock : MonoBehaviour {
 	}
 	
 	void SetMovable(){
-		MoveState = GridBlockMoveState.Movable;
+		baseMoveState = GridBlockMoveState.Movable;
 	}
 	
 	void SetPassable(){
-		MoveState = GridBlockMoveState.Passable;
+		baseMoveState = GridBlockMoveState.Passable;
 	}
 	
 	void SetImpassable(){
-		MoveState = GridBlockMoveState.Impassable;
+		baseMoveState = GridBlockMoveState.Impassable;
 	}
 	
 	//Below are mostly placeholder exceptions
@@ -87,7 +104,7 @@ public class GridBlock : MonoBehaviour {
 	}
 	
 	void OnMouseDown(){
-		if (Clickable){
+		if (Clickable && !Occupied){
 			gameWorld.ExecuteMove(this);
 		}
 	}

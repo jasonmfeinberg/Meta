@@ -31,11 +31,11 @@ public class GameWorld : MonoBehaviour
 		gameGrid = new GameGrid(GetComponentsInChildren<GridBlock>());
 		GameObject newChar = CreateCharacter(new Vector3(0F,0F,0F));
 		Character ch1 = newChar.GetComponent<Character>();
-		ch1.SetStats(10,3);
+		ch1.SetStats(10,3,0);
 		tq.Add (ch1);
 		GameObject newChar2 = CreateCharacter(new Vector3(2F,1F,2F));
 		Character ch2 = newChar2.GetComponent<Character>();
-		ch2.SetStats(15,2);
+		ch2.SetStats(15,2,1);
 		tq.Add (ch2);
 		//Camera Control Change goes here
 	}

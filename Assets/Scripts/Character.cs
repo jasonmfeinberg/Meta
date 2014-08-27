@@ -4,7 +4,16 @@ using System.Collections;
 public class Character : MonoBehaviour {
 	public CharClasses CharClass;
 	
-	public bool IsActive;
+	//This is to allow us to use the set accessor on Team. Within this code, this will be confusing. Open to suggestions!
+	protected int team;
+	
+	public int Team{
+		get {return team;}
+		set { 
+			team = value;
+			renderer.material.color = value == 0 ? Color.blue : Color.red;
+		}
+	}	
 	
 	public GameWorld gameWorld{
 		get {return transform.parent.GetComponent<GridBlock>().gameWorld; }
@@ -12,7 +21,6 @@ public class Character : MonoBehaviour {
 	}
 	
 	void Awake(){
-		IsActive = false;
 		CharClass = CharClasses.Swordsman;
 	}
 	
@@ -23,6 +31,11 @@ public class Character : MonoBehaviour {
 	public void SetStats(int s, int m){
 		Speed = s;
 		Move = m;
+	}
+	
+	public void SetStats(int s, int m, int t){
+		SetStats(s,m);
+		Team = t;
 	}
 	
 	public Vector3 Position{

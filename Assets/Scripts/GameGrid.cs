@@ -68,6 +68,10 @@ public class GameGrid : Grid<GridBlock>{
 		/*float rand = UnityEngine.Random.Range(0F,1F);
 		Debug.Log("" + rand + start);
 		Debug.Log("" + rand + end);*/
+		if (this[end].MoveState == GridBlockMoveState.Impassable){
+			return -1;
+		}
+		
 		int[,,] distArr = new int[XDim,YDim,ZDim];
 		for (int x = 0; x < XDim; x++){
 			for(int y = 0; y < YDim; y++){
