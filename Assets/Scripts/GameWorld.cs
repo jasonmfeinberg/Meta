@@ -30,7 +30,13 @@ public class GameWorld : MonoBehaviour
 		}
 		gameGrid = new GameGrid(GetComponentsInChildren<GridBlock>());
 		GameObject newChar = CreateCharacter(new Vector3(0F,0F,0F));
-		tq.Add (newChar.GetComponent<Character>());
+		Character ch1 = newChar.GetComponent<Character>();
+		ch1.SetStats(10,3);
+		tq.Add (ch1);
+		GameObject newChar2 = CreateCharacter(new Vector3(2F,1F,2F));
+		Character ch2 = newChar2.GetComponent<Character>();
+		ch2.SetStats(15,2);
+		tq.Add (ch2);
 		//Camera Control Change goes here
 	}
 	
@@ -59,7 +65,6 @@ public class GameWorld : MonoBehaviour
 		newChar.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 		GridBlock gridSpot = gameGrid[x, y, z];
 		Character ch = newChar.GetComponent<Character>();
-		ch.SetStats(10,3);
 		//Debug.Log (gameGrid[x,y,z]);
 		//Debug.Log (x);
 		//Debug.Log (y);
